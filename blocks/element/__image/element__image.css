@@ -1,0 +1,7 @@
+.element__image {
+  border-radius: 10px 10px 0 0;
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  grid-column-start: span 2;
+}

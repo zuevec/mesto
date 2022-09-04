@@ -1,0 +1,24 @@
+.element {
+  max-width: 282px;
+  width: 100%;
+  background: #FFF;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 42px;
+  align-items: center;
+  margin: 0 auto;
+  line-height: 0;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .element {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .element {
+    width: 100%;
+  }
+}
