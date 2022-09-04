@@ -2,10 +2,10 @@
   position: absolute;
   background-image: url(../../../images/popup/close.svg);
   background-position: 50%;
-  width: 58px;
-  height: 58px;
-  top: -48px;
-  right: -48px;
+  width: 32px;
+  height: 32px;
+  top: -28px;
+  right: -28px;
   background-size: contain;
   border: none;
   box-shadow: none;
@@ -17,4 +17,13 @@
 
 .popup__close:hover {
   opacity: .6;
+}
+
+@media screen and (max-width: 768px) {
+  .popup__close {
+    top: -31px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+  }
 }

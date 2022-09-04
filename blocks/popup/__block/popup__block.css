@@ -8,3 +8,11 @@
   position: relative;
   width: 430px;
 }
+
+
+@media screen and (max-width: 425px) {
+  .popup__block {
+    width: calc(100% - 38px);
+    padding: 25px 22px;
+  }
+}
