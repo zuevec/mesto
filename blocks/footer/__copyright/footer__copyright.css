@@ -1,5 +1,5 @@
-.copyright {
-  height: 18px;
+.footer__copyright {
+  font-size: 18px;
   line-height: 22px;
   color: #545454;
   max-width: 318px;
@@ -8,10 +8,9 @@
 
 
 @media screen and (max-width: 425px) {
-  .copyright {
+  .footer__copyright {
     font-size: 14px;
     line-height: 17px;
-    height: 14px;
   }
 }
 
