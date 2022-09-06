@@ -10,9 +10,3 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-@media screen and (max-width: 320px) {
-  .element__title {
-    margin: 25px 0 25px 21px;
-  }
-}
