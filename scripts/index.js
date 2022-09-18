@@ -40,12 +40,12 @@ buttonMestoAdd.addEventListener('click', openPopup);
 
 function openPopup() {
   let eventClassevent = event.target.className;
-  popup.classList.remove('popup_closed');
+  popup.classList.add('popup_opened');
   popupTemplate(eventClassevent)
 }
 
 function closePopup() {
-  popup.classList.add('popup_closed');
+  popup.classList.remove('popup_opened');
 }
 
 function popupTemplate(eventClassevent) {
@@ -101,7 +101,7 @@ function popupAction(eventClassevent) {
       evt.preventDefault();
       nameAuthor.textContent = inputName.value;
       job.textContent = inputJob.value;
-      popup.classList.add('popup_closed');
+      popup.classList.remove('popup_opened');
       formPopup.remove();
     }
 
@@ -114,7 +114,7 @@ function popupAction(eventClassevent) {
     function formMestoADD(evt) {
       evt.preventDefault();
       createElement('prepend', inputMesto.value, inputlinkImg.value);
-      popup.classList.add('popup_closed');
+      popup.classList.remove('popup_opened');
       formPopup.remove();
     }
 
