@@ -41,31 +41,39 @@
 
 
 
-  <div class="popup">
+  <div class="popup popup_profile">
     <div class="popup__block">
       <button class="popup__close" aria-label="Close"></button>
-      <template id="elementPopupProfile">
-        <form name="edit-profile" action="#" class="popup__form">
-          <h3 class="popup__title">Редактировать профиль</h3>
-          <input type="text" class="popup__input popup__input_name_name" name="name" value=""  placeholder="Имя">
-          <input type="text" class="popup__input popup__input_name_job" name="job" value=""  placeholder="Работа">
-          <button class="popup__button" type="submit">Сохранить</button>
-        </form>
-      </template>
+      <form name="edit-profile" action="#" class="popup__form">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <input type="text" class="popup__input popup__input_name_name" name="name" value="" placeholder="Имя">
+        <input type="text" class="popup__input popup__input_name_job" name="job" value="" placeholder="Работа">
+        <button class="popup__button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
 
-      <template id="elementPopupMesto">
-        <form name="edit-profile" action="#" class="popup__form">
-          <h3 class="popup__title">Новое место</h3>
-          <input type="text" class="popup__input popup__input_name_mesto" name="mesto" value="" placeholder="Название" required>
-          <input type="text" class="popup__input popup__input_name_linkImg" name="linkImg" value="" placeholder="Ссылка на картинку" required>
-          <button class="popup__button" type="submit">Создать</button>
-        </form>
-      </template>
+  <div class="popup popup_mesto-add">
+    <div class="popup__block">
+      <button class="popup__close" aria-label="Close"></button>
+      <form name="edit-profile" action="#" class="popup__form">
+        <h3 class="popup__title">Новое место</h3>
+        <input type="text" class="popup__input popup__input_name_mesto" name="mesto" value="" placeholder="Название"
+          required>
+        <input type="text" class="popup__input popup__input_name_linkImg" name="linkImg" value=""
+          placeholder="Ссылка на картинку" required>
+        <button class="popup__button" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
 
-      <template id="elementPopupImage">
+  <div class="popup popup_picture">
+    <div class="popup__block-image">
+      <button class="popup__close" aria-label="Close"></button>
+      <figure>
         <img src="" alt="" class="popup__image">
-      </template>
-
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
     </div>
   </div>
   <script src="scripts/index.js"></script>

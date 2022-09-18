@@ -26,132 +26,106 @@ const initialCards = [
 ];
 
 initialCards.forEach((item) => {
-  createElement('append', item.name, item.link);
+  createElement(item.name, item.link);
 })
 
 const popup = document.querySelector('.popup');
-const popupBlock = document.querySelector('.popup__block');
+const buttonClosePopup = document.querySelectorAll('.popup__close');
+
 const buttonProfileEdit = document.querySelector('.profile__edit');
 const buttonMestoAdd = document.querySelector('.profile__add-button');
-const buttonClosePopup = document.querySelector('.popup__close');
 
-buttonProfileEdit.addEventListener('click', openPopup);
-buttonMestoAdd.addEventListener('click', openPopup);
+const popupProfile = document.querySelector('.popup_profile');
+const popupMestoAdd = document.querySelector('.popup_mesto-add');
 
-function openPopup() {
-  let eventClassevent = event.target.className;
-  popup.classList.add('popup_opened');
-  popupTemplate(eventClassevent)
-}
+const inputName = document.querySelector('.popup__input_name_name');
+const inputJob = document.querySelector('.popup__input_name_job');
+const nameAuthor = document.querySelector('.profile__name');
+const job = document.querySelector('.profile__job');
 
-function closePopup() {
-  popup.classList.remove('popup_opened');
-}
+const inputMesto = document.querySelector('.popup__input_name_mesto');
+const inputlinkImg = document.querySelector('.popup__input_name_linkImg');
 
-function popupTemplate(eventClassevent) {
-  if (eventClassevent == 'profile__edit') {
-    // шаблон формы
-    const template = document.querySelector('#elementPopupProfile');
-    const templateCopy = template.content.cloneNode(true);
-    popupBlock.append(templateCopy);
-    return popupAction(eventClassevent);
+const elements = document.querySelector('.elements');
+
+const elementImage = document.querySelector('.element__image');
+
+const popupPicture = document.querySelector('.popup_picture');
+const popupImage = document.querySelector('.popup__image');
+const popupImageCaption = document.querySelector('.popup__caption');
+const elementLike = document.querySelector('.element__like');
+const elementTrash = document.querySelector('.element__trash');
+
+
+
+buttonProfileEdit.addEventListener('click', () => openPopup(popupProfile));
+buttonMestoAdd.addEventListener('click', () => openPopup(popupMestoAdd));
+
+popupProfile.addEventListener('submit', editformProfileEdit);
+popupMestoAdd.addEventListener('submit', addMesto);
+
+elements.addEventListener('click', (event) => {
+  if (event.target.className == 'element__like' || event.target.className == 'element__like element__like_active') {
+    return like(event.target);
   }
-  if (eventClassevent == 'profile__add-button') {
-    // шаблон формы
-    const template = document.querySelector('#elementPopupMesto');
-    const templateCopy = template.content.cloneNode(true);
-    popupBlock.append(templateCopy);
-    return popupAction(eventClassevent);
+  if (event.target.className == 'element__trash') {
+    return deleteImg(event.target);
   }
-  if (eventClassevent == 'element__image') {
-    const template = document.querySelector('#elementPopupImage');
-    const templateCopy = template.content.cloneNode(true);
-    popupBlock.append(templateCopy);
-    return popupAction(eventClassevent);
+  if (event.target.className == 'element__image') {
+    return showPopupImg(event.target);
   }
-}
+})
 
-function popupAction(eventClassevent) {
-  const formPopup = document.querySelector('.popup__form');
-  const popupImage = document.querySelector('.popup__image');
+buttonClosePopup.forEach(button => {
+  button.addEventListener('click', () => closePopup(button.parentElement.parentElement));
+});
 
-  buttonClosePopup.addEventListener('click', function (event) {
-    if (formPopup) {
-      formPopup.remove();
-    }
-
-    if (popupImage) {
-      popupImage.parentElement.classList.remove('popup__block_image');
-      popupImage.parentElement.classList.add('popup__block');
-      popupImage.remove();
-    }
-    buttonClosePopup.removeEventListener('click', closePopup());
-  })
-
-  if (eventClassevent == 'profile__edit') {
-    const inputName = document.querySelector('.popup__input_name_name');
-    const inputJob = document.querySelector('.popup__input_name_job');
-    const nameAuthor = document.querySelector('.profile__name');
-    const job = document.querySelector('.profile__job');
-
+function openPopup(item) {
+  if (item == popupProfile) {
     inputName.value = nameAuthor.textContent;
     inputJob.value = job.textContent;
-
-    function formProfileEdit(evt) {
-      evt.preventDefault();
-      nameAuthor.textContent = inputName.value;
-      job.textContent = inputJob.value;
-      popup.classList.remove('popup_opened');
-      formPopup.remove();
-    }
-
-    return formPopup.addEventListener('submit', formProfileEdit);
   }
-  if (eventClassevent == 'profile__add-button') {
-    const inputMesto = document.querySelector('.popup__input_name_mesto');
-    const inputlinkImg = document.querySelector('.popup__input_name_linkImg');
-
-    function formMestoADD(evt) {
-      evt.preventDefault();
-      createElement('prepend', inputMesto.value, inputlinkImg.value);
-      popup.classList.remove('popup_opened');
-      formPopup.remove();
-    }
-
-    return formPopup.addEventListener('submit', formMestoADD);
-  }
-  if (eventClassevent == 'element__image') {
-    popupImage.parentElement.classList.add('popup__block_image');
-    popupImage.parentElement.classList.remove('popup__block');
-    popupImage.src = event.target.src;
-  }
+  item.classList.add('popup_opened');
 }
 
-function createElement(methodInsert, namecard, linkcard) {
+function closePopup(item) {
+  item.classList.remove('popup_opened');
+}
+
+function editformProfileEdit(evt) {
+  evt.preventDefault();
+  nameAuthor.textContent = inputName.value;
+  job.textContent = inputJob.value;
+  closePopup(popupProfile);
+}
+
+function addMesto(evt) {
+  evt.preventDefault();
+  createElement(inputMesto.value, inputlinkImg.value);
+  closePopup(popupMestoAdd)
+}
+
+function createElement(namecard, linkcard) {
   const elements = document.querySelector('.elements')
   const template = document.querySelector('#elementTemplate')
   const templateCopy = template.content.cloneNode(true);
-
   templateCopy.querySelector('img').src = linkcard;
   templateCopy.querySelector('img').alt = namecard;
   templateCopy.querySelector('h2').textContent = namecard;
-
-  if (methodInsert == 'append') {
-    return elements.append(templateCopy);
-  }
-  if (methodInsert == 'prepend') {
-    return elements.prepend(templateCopy);
-  }
+  return elements.prepend(templateCopy);
 }
 
-document.querySelector('.elements').addEventListener('click', event => {
-  if (event.target.className == 'element__like' || event.target.className == 'element__like element__like_active') {
-    return event.target.classList.toggle('element__like_active');
-  }
-  if (event.target.className == 'element__trash') {
-    return event.target.parentElement.remove();
-  }
-  if (event.target.className == 'element__image') {
-    return openPopup()
-  }
-});
+function like(item) {
+  item.classList.toggle('element__like_active');
+}
+
+function deleteImg(item) {
+  item.parentElement.remove();
+}
+
+function showPopupImg(item) {
+  openPopup(popupPicture);
+  popupImage.src = item.src;
+  popupImage.alt = item.alt;
+  popupImageCaption.textContent = item.alt;
+}
