@@ -1,75 +1,74 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Мой личный инстаграм</title>
-    <link rel="stylesheet" href="./pages/index.css">
-  </head>
-  <body class="page">
-    <header class="header">
-      <img src="images/header/logo.svg" alt="Логотип проекта" class="header__logo">
-    </header>
-    <main class="content">
-      <section class="profile">
-        <div class="profile__info">
-          <img src="images/profile/Avatar.png" alt="Аватарка фотографа" class="profile__avatar">
-          <div class="profile__text">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit" type="button"></button>
-            <p class="profile__job">Исследователь океана</p>
-          </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мой личный инстаграм</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="page">
+  <header class="header">
+    <img src="images/header/logo.svg" alt="Логотип проекта" class="header__logo">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <div class="profile__info">
+        <img src="images/profile/Avatar.png" alt="Аватарка фотографа" class="profile__avatar">
+        <div class="profile__text">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit" type="button"></button>
+          <p class="profile__job">Исследователь океана</p>
         </div>
-        <button class="profile__add-button" type="button"></button>
-      </section>
-      <section class="elements">
+      </div>
+      <button class="profile__add-button" type="button"></button>
+    </section>
+    <section class="elements">
+      <template id="elementTemplate">
         <div class="element">
-          <img src="images/elements/kirill-pershin-1088404-unsplash-1.png" alt="Карачаевск" class="element__image">
-          <h2 class="element__title">Карачаевск</h2>
+          <button type="button" class="element__trash"></button>
+          <img src="" alt="" class="element__image">
+          <h2 class="element__title"></h2>
           <button type="button" class="element__like"></button>
         </div>
-        <div class="element">
-          <img src="images/elements/kirill-pershin-1088404-unsplash-1.png" alt="Гора Эльбрус" class="element__image">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" class="element__like"></button>
-        </div>
-        <div class="element">
-          <img src="images/elements/kirill-pershin-1088404-unsplash-1.png" alt="Домбай" class="element__image">
-          <h2 class="element__title">Домбай</h2>
-          <button type="button" class="element__like"></button>
-        </div>
-        <div class="element">
-          <img src="images/elements/kirill-pershin-1088404-unsplash-1.png" alt="Гора Эльбрус" class="element__image">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" class="element__like"></button>
-        </div>
-        <div class="element">
-          <img src="images/elements/kirill-pershin-1088404-unsplash-1.png" alt="Домбай" class="element__image">
-          <h2 class="element__title">Домбай</h2>
-          <button type="button" class="element__like"></button>
-        </div>
-        <div class="element">
-          <img src="images/elements/kirill-pershin-1088404-unsplash-1.png" alt="карачаево-черкесия"
-            class="element__image">
-          <h2 class="element__title">Карачаево-Черкесия</h2>
-          <button type="button" class="element__like"></button>
-        </div>
-      </section>
-    </main>
-    <footer class="footer">
-      <p class="footer__copyright">© 2020 Mesto Russia</p>
-    </footer>
-    <div class="popup popup_closed">
-      <div class="popup__block">
-        <button class="popup__close" aria-label="Close"></button>
-        <h3 class="popup__title">Редактировать профиль</h3>
+      </template>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">© 2020 Mesto Russia</p>
+  </footer>
+
+
+
+  <div class="popup popup_closed">
+    <div class="popup__block">
+      <button class="popup__close" aria-label="Close"></button>
+      <template id="elementPopupProfile">
         <form name="edit-profile" action="#" class="popup__form">
-          <input type="text" class="popup__input popup__input_name_name" name="name" value="">
-          <input type="text" class="popup__input popup__input_name_job" name="job" value="">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <input type="text" class="popup__input popup__input_name_name" name="name" value=""  placeholder="Имя">
+          <input type="text" class="popup__input popup__input_name_job" name="job" value=""  placeholder="Работа">
           <button class="popup__button" type="submit">Сохранить</button>
         </form>
-      </div>
+      </template>
+
+      <template id="elementPopupMesto">
+        <form name="edit-profile" action="#" class="popup__form">
+          <h3 class="popup__title">Новое место</h3>
+          <input type="text" class="popup__input popup__input_name_mesto" name="mesto" value="" placeholder="Название" required>
+          <input type="text" class="popup__input popup__input_name_linkImg" name="linkImg" value="" placeholder="Ссылка на картинку" required>
+          <button class="popup__button" type="submit">Создать</button>
+        </form>
+      </template>
+
+      <template id="elementPopupImage">
+        <img src="" alt="" class="popup__image">
+      </template>
+
     </div>
-    <script src="scripts/index.js"></script>
-  </body>
+  </div>
+  <script src="scripts/index.js"></script>
+</body>
+
 </html>
