@@ -73,10 +73,17 @@ function popupTemplate(eventClassevent) {
 
 function popupAction(eventClassevent) {
   const formPopup = document.querySelector('.popup__form');
+  const popupImage = document.querySelector('.popup__image');
 
   buttonClosePopup.addEventListener('click', function (event) {
     if (formPopup) {
       formPopup.remove();
+    }
+
+    if (popupImage) {
+      popupImage.parentElement.classList.remove('popup__block_image');
+      popupImage.parentElement.classList.add('popup__block');
+      popupImage.remove();
     }
     buttonClosePopup.removeEventListener('click', closePopup());
   })
@@ -106,9 +113,7 @@ function popupAction(eventClassevent) {
 
     function formMestoADD(evt) {
       evt.preventDefault();
-
       createElement('prepend', inputMesto.value, inputlinkImg.value);
-
       popup.classList.add('popup_closed');
       formPopup.remove();
     }
@@ -116,7 +121,6 @@ function popupAction(eventClassevent) {
     return formPopup.addEventListener('submit', formMestoADD);
   }
   if (eventClassevent == 'element__image') {
-    const popupImage = document.querySelector('.popup__image');
     popupImage.parentElement.classList.add('popup__block_image');
     popupImage.parentElement.classList.remove('popup__block');
     popupImage.src = event.target.src;
