@@ -15,11 +15,13 @@
 @media screen and (max-width: 768px) {
   .profile {
     flex-direction: column;
+    row-gap: 36px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .profile {
     margin: 42px auto 36px;
+    row-gap: 0;
   }
 }
