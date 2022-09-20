@@ -25,8 +25,6 @@ const initialCards = [
   }
 ];
 
-
-
 const buttonCloseList = document.querySelectorAll('.popup__close');
 
 const buttonProfileEdit = document.querySelector('.profile__edit');
@@ -43,25 +41,19 @@ const job = document.querySelector('.profile__job');
 const inputMesto = document.querySelector('.popup__input_name_mesto');
 const inputlinkImg = document.querySelector('.popup__input_name_linkImg');
 
-const elementImages = document.querySelectorAll('.element__image');
-const elementLikes = document.querySelectorAll('.element__like');
-const elementTrashs = document.querySelectorAll('.element__trash');
-
 const popupPicture = document.querySelector('.popup_picture');
 const popupImage = document.querySelector('.popup__image');
 const popupImageCaption = document.querySelector('.popup__caption');
 
 const template = document.querySelector('#elementTemplate');
-const elements = document.querySelector('.elements')
+const elementsSection = document.querySelector('.elements')
 
 initialCards.forEach((item) => {
   addElement(item.name, item.link);
 })
 
-buttonProfileEdit.addEventListener('click', () => {openPropfilePopup(), openPopup(popupProfile)});
+buttonProfileEdit.addEventListener('click', () => { openPropfilePopup(), openPopup(popupProfile) });
 buttonMestoAdd.addEventListener('click', () => openPopup(popupMestoAdd));
-
-
 
 popupProfile.addEventListener('submit', editformProfileEdit);
 popupMestoAdd.addEventListener('submit', addMesto);
@@ -77,7 +69,7 @@ function openPopup(item) {
 function openPropfilePopup() {
   inputName.value = nameAuthor.textContent;
   inputJob.value = job.textContent;
-  }
+}
 
 function closePopup(item) {
   item.classList.remove('popup_opened');
@@ -93,8 +85,8 @@ function editformProfileEdit(evt) {
 function addMesto(evt) {
   evt.preventDefault();
   addElement(inputMesto.value, inputlinkImg.value);
-  inputMesto.value='';
-  inputlinkImg.value='';
+  inputMesto.value = '';
+  inputlinkImg.value = '';
   closePopup(popupMestoAdd)
 }
 
@@ -106,24 +98,21 @@ function renderElement(namecard, linkcard) {
   elementImage.alt = namecard;
   elementTitle.textContent = namecard;
 
-  elementImage.addEventListener('click', (event) => showPopupImg(event.target));
+  elementImage.addEventListener('click', (event) => showPopupImg(namecard, linkcard));
 
   const likeElement = templateCopy.querySelector('.element__like');
-  likeElement.addEventListener('click', (event) => like(event.target));
+  likeElement.addEventListener('click', (event) => like(likeElement));
 
   const elementTrash = templateCopy.querySelector('.element__trash');
-  elementTrash.addEventListener('click', (event) => deleteImg(event.target));
+  elementTrash.addEventListener('click', (event) => deleteImg(elementTrash));
 
   return templateCopy;
 }
 
 function addElement(namecard, linkcard) {
   const newElement = renderElement(namecard, linkcard);
-  return elements.prepend(newElement);
+  elementsSection.prepend(newElement);
 }
-
-
-
 
 function like(item) {
   item.classList.toggle('element__like_active');
@@ -133,9 +122,9 @@ function deleteImg(item) {
   item.closest('.element').remove();
 }
 
-function showPopupImg(item) {
+function showPopupImg(namecard, linkcard) {
   openPopup(popupPicture);
-  popupImage.src = item.src;
-  popupImage.alt = item.alt;
-  popupImageCaption.textContent = item.alt;
+  popupImage.src = linkcard;
+  popupImage.alt = namecard;
+  popupImageCaption.textContent = namecard;
 }
