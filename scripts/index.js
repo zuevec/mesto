@@ -71,7 +71,7 @@ function openPopup(item) {
 }
 
 function clickOnOverlay(event, item) {
-  if (event.target.closest('.popup')){
+  if (event.target.classList.contains('popup_opened')){
     closePopup(item);
   }
 }
