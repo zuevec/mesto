@@ -48,6 +48,8 @@ const popupImageCaption = document.querySelector('.popup__caption');
 const template = document.querySelector('#elementTemplate');
 const elementsSection = document.querySelector('.elements')
 
+
+
 initialCards.forEach((item) => {
   addElement(item.name, item.link);
 })
@@ -64,6 +66,20 @@ buttonCloseList.forEach(button => {
 
 function openPopup(item) {
   item.classList.add('popup_opened');
+  item.addEventListener('click', (event) => clickOnOverlay(event, item));
+  document.addEventListener('keydown', (event) => EscOnKeyDown(event, item));
+}
+
+function clickOnOverlay(event, item) {
+  if (event.target.closest('.popup')){
+    closePopup(item);
+  }
+}
+
+function EscOnKeyDown(event, item) {
+  if (event.key === "Escape"){
+    closePopup(item);
+  }
 }
 
 function openPropfilePopup() {
@@ -73,6 +89,8 @@ function openPropfilePopup() {
 
 function closePopup(item) {
   item.classList.remove('popup_opened');
+  item.removeEventListener('click', clickOnOverlay);
+  document.removeEventListener('keydown', EscOnKeyDown);
 }
 
 function editformProfileEdit(evt) {
@@ -127,4 +145,7 @@ function showPopupImg(namecard, linkcard) {
   popupImage.src = linkcard;
   popupImage.alt = namecard;
   popupImageCaption.textContent = namecard;
+
 }
+
+

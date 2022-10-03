@@ -44,11 +44,13 @@
   <div class="popup popup_profile">
     <div class="popup__block">
       <button class="popup__close" aria-label="Close"></button>
-      <form name="edit-profile" action="#" class="popup__form">
+      <form name="editProfile" action="#" class="popup__form" novalidate>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input type="text" class="popup__input popup__input_name_name" name="name" value="" placeholder="Имя">
-        <input type="text" class="popup__input popup__input_name_job" name="job" value="" placeholder="Работа">
-        <button class="popup__button" type="submit">Сохранить</button>
+        <input class="popup__input popup__input_name_name" name="nameprofile" id="name-input" type="text" minlength="2" maxlength="40" value="" placeholder="Имя" required>
+        <span class="popup__placeholder name-input-placeholder"></span>
+        <input class="popup__input popup__input_name_job" name="job" id="job-input" type="text" minlength="2" maxlength="200" value="" placeholder="Работа" required>
+        <span class="popup__placeholder job-input-placeholder"></span>
+        <button class="popup__button popup__submit-button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -56,13 +58,15 @@
   <div class="popup popup_mesto-add">
     <div class="popup__block">
       <button class="popup__close" aria-label="Close"></button>
-      <form name="edit-profile" action="#" class="popup__form">
+      <form name="addMesto" action="#" class="popup__form" novalidate>
         <h3 class="popup__title">Новое место</h3>
-        <input type="text" class="popup__input popup__input_name_mesto" name="mesto" value="" placeholder="Название"
+        <input class="popup__input popup__input_name_mesto" name="mesto" id="mesto-input" type="text" minlength="2" maxlength="30" value="" placeholder="Название"
           required>
-        <input type="text" class="popup__input popup__input_name_linkImg" name="linkImg" value=""
+          <span class="popup__placeholder mesto-input-placeholder"></span>
+        <input class="popup__input popup__input_name_linkImg" name="linkImg" id="linkImg-input" type="url" value=""
           placeholder="Ссылка на картинку" required>
-        <button class="popup__button" type="submit">Создать</button>
+          <span class="popup__placeholder linkImg-input-placeholder"></span>
+        <button class="popup__button popup__submit-button popup__submit-button_disabled" type="submit">Создать</button>
       </form>
     </div>
   </div>
@@ -76,7 +80,9 @@
       </figure>
     </div>
   </div>
+
   <script src="scripts/index.js"></script>
+  <script src="scripts/validate.js"></script>
 </body>
 
 </html>
