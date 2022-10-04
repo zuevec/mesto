@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const buttonCloseList = document.querySelectorAll('.popup__close');
 
 const buttonProfileEdit = document.querySelector('.profile__edit');
@@ -103,12 +76,14 @@ function editformProfileEdit(evt) {
 function addMesto(evt) {
   evt.preventDefault();
   addElement(inputMesto.value, inputlinkImg.value);
-  inputMesto.value = '';
-  inputlinkImg.value = '';
+  evt.target.reset();
+  console.log(evt.submitter);
+  evt.submitter.setAttribute('disabled', 'disabled');
+  evt.submitter.classList.add('popup__submit-button_disabled');
   closePopup(popupMestoAdd)
 }
 
-function renderElement(namecard, linkcard) {
+function createCard(namecard, linkcard) {
   const templateCopy = template.content.cloneNode(true);
   const elementImage = templateCopy.querySelector('.element__image');
   const elementTitle = templateCopy.querySelector('.element__title')
@@ -116,19 +91,19 @@ function renderElement(namecard, linkcard) {
   elementImage.alt = namecard;
   elementTitle.textContent = namecard;
 
-  elementImage.addEventListener('click', (event) => showPopupImg(namecard, linkcard));
+  elementImage.addEventListener('click', (event) => showPopupImg(nameCard, linkCard));
 
   const likeElement = templateCopy.querySelector('.element__like');
   likeElement.addEventListener('click', (event) => like(likeElement));
 
   const elementTrash = templateCopy.querySelector('.element__trash');
-  elementTrash.addEventListener('click', (event) => deleteImg(elementTrash));
+  elementTrash.addEventListener('click', (event) => deleteCard(elementTrash));
 
   return templateCopy;
 }
 
-function addElement(namecard, linkcard) {
-  const newElement = renderElement(namecard, linkcard);
+function addElement(nameCard, linkCard) {
+  const newElement = createCard(nameCard, linkCard);
   elementsSection.prepend(newElement);
 }
 
@@ -136,13 +111,13 @@ function like(item) {
   item.classList.toggle('element__like_active');
 }
 
-function deleteImg(item) {
+function deleteCard(item) {
   item.closest('.element').remove();
 }
 
-function showPopupImg(namecard, linkcard) {
+function showPopupImg(nameCard, linkCard) {
   openPopup(popupPicture);
-  popupImage.src = linkcard;
+  popupImage.src = linkCard;
   popupImage.alt = namecard;
   popupImageCaption.textContent = namecard;
 
