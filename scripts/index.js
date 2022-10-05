@@ -77,8 +77,7 @@ function addMesto(evt) {
   evt.preventDefault();
   addElement(inputMesto.value, inputlinkImg.value);
   evt.target.reset();
-  evt.submitter.setAttribute('disabled', 'disabled');
-  evt.submitter.classList.add('popup__submit-button_disabled');
+  disableSubmitButton(evt.submitter, enableValidation)
   closePopup(popupMestoAdd)
 }
 

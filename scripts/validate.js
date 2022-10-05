@@ -1,9 +1,11 @@
-const enableValidation = (settings) => {
-  const popups = Array.from(document.querySelectorAll(settings.popupSelector));
-  popups.forEach((popup) => {
-    setEventListeners(popup, settings);
-  });
-};
+const enableValidation = ({
+  popupSelector: ".popup",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_disabled",
+  inputErrorClass: "popup__input_error",
+  errorClass: "popup__error-message_active"
+});
 
 const setEventListeners = (popupElement, settings) => {
   const inputList = Array.from(popupElement.querySelectorAll(settings.inputSelector));
@@ -15,18 +17,6 @@ const setEventListeners = (popupElement, settings) => {
     });
   });
 };
-
-// включение валидации вызовом enableValidation
-// все настройки передаются при вызове
-
-enableValidation({
-  popupSelector: ".popup",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "popup__submit-button_disabled",
-  inputErrorClass: "popup__input_error",
-  errorClass: "popup__error-message_active"
-});
 
 const showInputError = (popupElement, inputElement, errorMessage, settings) => {
   const errorElement = popupElement.querySelector(`.${inputElement.id}-placeholder`);
@@ -58,13 +48,24 @@ function hasInvalidInput (inputList) {
 
 function toggleButtonState (inputList, buttonElement, settings) {
   if (hasInvalidInput (inputList)) {
-    buttonElement.classList.add(settings.inactiveButtonClass);
-		buttonElement.setAttribute("disabled", "disabled");
+  disableSubmitButton(buttonElement, settings)
   } else {
     buttonElement.classList.remove(settings.inactiveButtonClass);
 		buttonElement.removeAttribute("disabled");
   }
 }
 
+function disableSubmitButton(buttonElement, settings) {
+  buttonElement.classList.add(settings.inactiveButtonClass);
+  buttonElement.setAttribute("disabled", "disabled");
+}
 
+function enableSettings(settings) {
+  const popups = Array.from(document.querySelectorAll(settings.popupSelector));
+  popups.forEach((popup) => {
+    setEventListeners(popup, settings);
+  });
+}
+
+enableSettings(enableValidation)
 
