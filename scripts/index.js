@@ -81,13 +81,13 @@ function addMesto(evt) {
   closePopup(popupMestoAdd)
 }
 
-function createCard(namecard, linkcard) {
+function createCard(nameCard, linkCard) {
   const templateCopy = template.content.cloneNode(true);
   const elementImage = templateCopy.querySelector('.element__image');
   const elementTitle = templateCopy.querySelector('.element__title')
-  elementImage.src = linkcard;
-  elementImage.alt = namecard;
-  elementTitle.textContent = namecard;
+  elementImage.src = linkCard;
+  elementImage.alt = nameCard;
+  elementTitle.textContent = nameCard;
 
   elementImage.addEventListener('click', (event) => showPopupImg(nameCard, linkCard));
 
@@ -99,6 +99,7 @@ function createCard(namecard, linkcard) {
 
   return templateCopy;
 }
+
 
 function addElement(nameCard, linkCard) {
   const newElement = createCard(nameCard, linkCard);
@@ -116,8 +117,8 @@ function deleteCard(item) {
 function showPopupImg(nameCard, linkCard) {
   openPopup(popupPicture);
   popupImage.src = linkCard;
-  popupImage.alt = namecard;
-  popupImageCaption.textContent = namecard;
+  popupImage.alt = nameCard;
+  popupImageCaption.textContent = nameCard;
 
 }
 
