@@ -1,8 +1,4 @@
 import {showPopupImg, initialCards} from '/scripts/index.js';
-
-
-
-
 export class Card {
   constructor(item, template) {
     this._name = item.name;
@@ -57,16 +53,10 @@ export class Card {
   }
 
   _like() {
-
     this._element.querySelector('.element__like').classList.toggle('element__like_active');
-
   }
 
   _deleteCard() {
     this._element.querySelector('.element__trash').closest('.element').remove();
   }
-
-
 }
-
-
