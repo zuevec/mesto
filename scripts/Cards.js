@@ -1,4 +1,4 @@
-import {showPopupImg, initialCards} from '/scripts/index.js';
+import {showPopupImg, initialCards} from './index.js';
 export class Card {
   constructor(item, template) {
     this._name = item.name;
