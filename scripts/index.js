@@ -1,4 +1,4 @@
-import {Card} from '/scripts/Cards.js';
+import {Card} from './Cards.js';
 import {FormValidator}from './FormValidator.js';
 
 export const initialCards = [
