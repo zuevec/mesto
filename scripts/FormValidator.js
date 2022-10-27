@@ -9,8 +9,6 @@ export class FormValidator {
     this._popupName = popupName;
     this._inputList = Array.from(this._popupName.querySelectorAll(this._inputSelector));
     this._buttonElement = this._popupName.querySelector(this._submitButtonSelector);
-    this._formList = Array.from(this._popupName.querySelectorAll(this._formSelector));
-
   }
 
   _showInputError = (inputElement, errorMessage) => {
@@ -65,7 +63,7 @@ disableSubmitButton() {
 }
 
   enableValidation() {
-    this._setEventListeners(this._formSelector);
+    this._setEventListeners();
   }
 
 }
