@@ -44,6 +44,7 @@ popupEditProfile.setEventListeners();
 const newCardFormValidator = new FormValidator(enableValidation, formAddNewCard);
 newCardFormValidator.enableValidation();
 
+
 const popupNewCard = new PopupWithForm({
   popupSelector: '.popup_mesto-add',
   handleFormSubmit: (data) => {
@@ -80,5 +81,6 @@ function createCard(item) {
 
   buttonMestoAdd.addEventListener('click', () => {
     newCardFormValidator.hideErrors();
+    newCardFormValidator.disableButton();
     popupNewCard.open();
   });
