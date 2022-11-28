@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Мой личный инстаграм</title>
-  <link rel="stylesheet" href="./pages/index.css">
+
 </head>
 
 <body class="page">
@@ -46,7 +46,7 @@
       <button class="popup__close" aria-label="Close"></button>
       <form name="editProfile" action="#" class="popup__form" novalidate>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input class="popup__input popup__input_name_name" name="nameprofile" id="name-input" type="text" minlength="2" maxlength="40" value="" placeholder="Имя" required>
+        <input class="popup__input popup__input_name_name" name="name" id="name-input" type="text" minlength="2" maxlength="40" value="" placeholder="Имя" required>
         <span class="popup__placeholder name-input-placeholder"></span>
         <input class="popup__input popup__input_name_job" name="job" id="job-input" type="text" minlength="2" maxlength="200" value="" placeholder="Работа" required>
         <span class="popup__placeholder job-input-placeholder"></span>
@@ -60,10 +60,10 @@
       <button class="popup__close" aria-label="Close"></button>
       <form name="addMesto" action="#" class="popup__form" novalidate>
         <h3 class="popup__title">Новое место</h3>
-        <input class="popup__input popup__input_name_mesto" name="mesto" id="mesto-input" type="text" minlength="2" maxlength="30" value="" placeholder="Название"
+        <input class="popup__input popup__input_name_mesto" name="name" id="mesto-input" type="text" minlength="2" maxlength="30" value="" placeholder="Название"
           required>
           <span class="popup__placeholder mesto-input-placeholder"></span>
-        <input class="popup__input popup__input_name_linkImg" name="linkImg" id="linkImg-input" type="url" value=""
+        <input class="popup__input popup__input_name_linkImg" name="link" id="linkImg-input" type="url" value=""
           placeholder="Ссылка на картинку" required>
           <span class="popup__placeholder linkImg-input-placeholder"></span>
         <button class="popup__button popup__submit-button popup__submit-button_disabled" type="submit" disabled>Создать</button>
@@ -80,7 +80,7 @@
       </figure>
     </div>
   </div>
-  <script type="module" src="scripts/index.js"></script>
+
 
 </body>
 

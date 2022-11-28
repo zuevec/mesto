@@ -1,13 +1,13 @@
-export class Card {
-  constructor(item, template, showPopupImg) {
-    this._name = item.name;
-    this._link = item.link;
-    this._template = template;
-    this._showPopupImg = showPopupImg;
+export default class Card {
+  constructor({item, templateSelector, handleCardClick}) {
+    this._item = item;
+    this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
-    const cardElement = this._template
+
+    const cardElement = this._templateSelector
     .content
     .querySelector('.element')
     .cloneNode(true);
@@ -22,9 +22,9 @@ export class Card {
     this._cardLike = this._element.querySelector('.element__like');
     this._cardTrash = this._element.querySelector('.element__trash')
 
-    this._cardImage.src = this._link;
-    this._cardImage.alt = this._name;
-    this._cardTitle.textContent = this._name;
+    this._cardImage.src = this._item.link;
+    this._cardImage.alt = this._item.name;
+    this._cardTitle.textContent = this._item.name;
 
     this._setEventListeners();
 
@@ -33,7 +33,7 @@ export class Card {
 
   _setEventListeners() {
      this._cardImage.addEventListener('click', () => {
-      this._showPopupImg(this._name, this._link)
+      this._handleCardClick(this._item)
     });
 
      this._cardLike.addEventListener('click', () => {

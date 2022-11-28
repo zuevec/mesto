@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(settings, popupName) {
     this._formSelector = settings.formSelector;
     this._inputSelector = settings.inputSelector;
@@ -64,6 +64,14 @@ disableSubmitButton() {
 
   enableValidation() {
     this._setEventListeners();
+  }
+
+
+  hideErrors() {
+    this._inputList.forEach((inputElement) => {
+      this._errorElement = this._popupName.querySelector(`.${inputElement.id}-placeholder`);
+      this._hideInputError(inputElement);
+    });
   }
 
 }
