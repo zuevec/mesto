@@ -17,6 +17,7 @@
     <section class="profile">
       <div class="profile__info">
         <img src="562483fd2e6aca3c0370.png" alt="Аватарка фотографа" class="profile__avatar">
+        <button class="profile__avatar-btn"></button>
         <div class="profile__text">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit" type="button"></button>
@@ -26,12 +27,15 @@
       <button class="profile__add-button" type="button"></button>
     </section>
     <section class="elements" aria-label="Карточки с фотографиями">
-      <template id="elementTemplate">
+      <template id="elementTemplate" class="card-template">
         <div class="element">
           <button type="button" class="element__trash"></button>
           <img src="/" alt="Описание картинки" class="element__image">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__like"></button>
+          <div class="element__likes">
+            <button type="button" class="element__like"></button>
+            <p class="element__like-count"></p>
+          </div>
         </div>
       </template>
     </section>
@@ -72,6 +76,28 @@
     </div>
   </div>
 
+
+  <div class="popup popup_type_avatar">
+    <div class="popup__block">
+      <button type="button" class="popup__close"></button>
+      <h3 class="popup__title">Обновить аватар</h3>
+      <form name="edit-avatar-popup" action="#" class="popup__form" novalidate>
+        <fieldset class="popup__set">
+          <input
+            type="url"
+            name="avatar"
+            id="avatar"
+            placeholder="Ссылка на картинку"
+            class="popup__input"
+            required>
+          <span id="avatar-error" class="popup__input-error"></span>
+          <button type="submit" class="popup__button">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+
   <div class="popup popup_picture">
     <div class="popup__block-image">
       <button class="popup__close" aria-label="Close"></button>
@@ -83,6 +109,15 @@
   </div>
 
 
+  <div class="popup popup_remove-element">
+    <div class="popup__block">
+      <button type="button" class="popup__close"></button>
+      <h3 class="popup__title">Вы уверены?</h3>
+      <form class="popup__form" name="remove-card" novalidate>
+        <button type="submit" class="popup__button popup__submit-button">Да</button>
+      </form>
+    </div>
+  </div>
 </body>
 
 </html>
