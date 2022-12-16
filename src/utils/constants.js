@@ -1,30 +1,3 @@
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 export const enableValidation = ({
   popupSelector: ".popup",
   inputSelector: ".popup__input",
@@ -34,7 +7,7 @@ export const enableValidation = ({
   errorClass: "popup__error-message_active"
 });
 
-export const template = document.querySelector('#elementTemplate');
+
 export const popupProfile = document.querySelector('.popup_profile');
 export const buttonProfileEdit = document.querySelector('.profile__edit');
 export const buttonMestoAdd = document.querySelector('.profile__add-button');
@@ -59,10 +32,30 @@ export const elementsSection = document.querySelector('.elements')
 
 export const newCardItem = {};
 
-export const formEditProfile = document.forms.editProfile;
+export const formEditProfile = popupProfile.querySelector('.popup__form');
 export const newUserName = formEditProfile.elements.nameprofile;
 export const newUserOccupation = formEditProfile.elements.job;
 
 export const formAddNewCard = document.forms.addMesto;
 export const newCardName = formAddNewCard.elements.mesto;
 export const newCardLink = formAddNewCard.elements.link;
+
+
+export const apiConfig = {
+  address: 'https://mesto.nomoreparties.co/v1',
+  groupId: `cohort-54`,
+  token: `d730e139-d019-43cd-8b99-52f07ddaab79`,
+}
+
+export const cardsConfig = {
+  placesWrap: 'places__list',
+  cardSelector: '.card-template'
+};
+
+export const popupConfig = {
+  editFormModalWindow: 'popup_profile',
+  cardFormModalWindow: 'popup_mesto-add',
+  imageModalWindow: 'popup_picture',
+  removeCardModalWindow: 'popup_remove-element',
+  changeAvatarModalWindow: 'popup_type_avatar'
+};
