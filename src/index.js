@@ -17,6 +17,7 @@ import {
   cardsConfig,
   formEditProfile,
   formAddNewCard,
+  formAddNewAvatar,
   apiConfig,
   inputJob,
   inputName
@@ -83,7 +84,7 @@ buttonProfileEdit.addEventListener('click', () => {
 const newCardPopup = new PopupWithForm({
   popupSelector: popupConfig.cardFormModalWindow,
   handleFormSubmit: (data) => {
-
+    newCardPopup.renderLoading(true);
     api.addCard(data)
       .then((cardData) => {
         cardList.addItem(createCard(cardData));
@@ -103,9 +104,6 @@ buttonMestoAdd.addEventListener('click', () => {
 const changeAvatarPopup = new PopupWithForm({
   popupSelector: popupConfig.changeAvatarModalWindow,
   handleFormSubmit: (data) => {
-    console.log(api.setUserAvatar({
-      avatar2: data.avatar
-    }))
     changeAvatarPopup.renderLoading(true);
     api.setUserAvatar({
       avatar: data.avatar
@@ -122,6 +120,7 @@ const changeAvatarPopup = new PopupWithForm({
 changeAvatarPopup.setEventListeners();
 
 openAvatarFormButton.addEventListener('click', () => {
+  newAvatarFormValidator.toggleButtonState();
   changeAvatarPopup.open();
 });
 
@@ -176,6 +175,9 @@ profileEditFormValidator.enableValidation();
 
 const newCardFormValidator = new FormValidator(enableValidation, formAddNewCard);
 newCardFormValidator.enableValidation();
+
+const newAvatarFormValidator = new FormValidator(enableValidation, formAddNewAvatar);
+newAvatarFormValidator.enableValidation();
 
 Promise.all([api.getCardList(), api.getUserInfo()])
   .then(([cards, userData]) => {

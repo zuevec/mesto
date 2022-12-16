@@ -40,6 +40,8 @@ export const formAddNewCard = document.forms.addMesto;
 export const newCardName = formAddNewCard.elements.mesto;
 export const newCardLink = formAddNewCard.elements.link;
 
+export const formAddNewAvatar = document.forms.editAvatar;
+
 
 export const apiConfig = {
   address: 'https://mesto.nomoreparties.co/v1',

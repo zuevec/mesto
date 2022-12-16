@@ -45,7 +45,6 @@ export default class Api {
     }
 
     getUserInfo() {
-     // return fetch(`${this._address}/${this._groupId}/users/me`, {
       return fetch(`${this._address}/${this._groupId}/users/me`, {
         headers: {
           authorization: this._token,
