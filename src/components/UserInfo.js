@@ -17,6 +17,5 @@ export default class UserInfo {
     if (data.name) this._userName.textContent = data.name;
     if (data.about) this._job.textContent = data.about;
     if (data.avatar) this._avatar.src = data.avatar;
-    console.log(data)
   }
 }
